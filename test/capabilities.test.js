@@ -100,6 +100,22 @@ describe('Capabilities', function() {
       });
     });
 
+    it('should enable querying for available hardware acceleration methods', function(done) {
+      new Ffmpeg({ source: '' }).getAvailableHwAccels(function(err, hwaccels) {
+        testhelper.logError(err);
+        assert.ok(!err);
+
+        (Array.isArray(hwaccels)).should.equal(true);
+        
+        hwaccels.forEach(function(hwaccel) {
+          (typeof hwaccel).should.equal('string');
+          hwaccel.length.should.be.above(0);
+        });
+
+        done();
+      });
+    });
+
     it('should enable querying capabilities without instanciating a command', function(done) {
       Ffmpeg.getAvailableCodecs(function(err, codecs) {
         testhelper.logError(err);
