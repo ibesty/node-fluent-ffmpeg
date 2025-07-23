@@ -101,7 +101,7 @@ describe('Capabilities', function() {
     });
 
     it('should enable querying for available hardware acceleration methods', function(done) {
-      new Ffmpeg({ source: '' }).getAvailableHwaccels(function(err, hwaccels) {
+      new Ffmpeg({ source: '' }).getAvailableHwAccels(function(err, hwaccels) {
         testhelper.logError(err);
         assert.ok(!err);
 
